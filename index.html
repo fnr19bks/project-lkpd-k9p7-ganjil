@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="LKPD Digital Interaktif SPENLAS DIGITAL JOURNALIST - CMS/Blog dan Etika Publikasi - SMP Negeri 19 Kota Bekasi" />
+<meta name="author" content="SMP Negeri 19 Kota Bekasi" />
+<meta name="theme-color" content="#1E3A8A" />
+<title>SPENLAS DIGITAL JOURNALIST — LKPD Informatika Kelas 9</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============ HEADER (STICKY) ============ -->
+<header class="app-header" id="appHeader">
+  <div class="header-inner">
+    <div class="brand">
+      <img class="brand-logo" data-logo src="logo.png" alt="Logo SMP Negeri 19 Kota Bekasi" />
+      <div class="brand-text">
+        <span class="brand-title">SPENLAS DIGITAL JOURNALIST</span>
+        <span class="brand-sub" data-i18n="brandSub">LKPD Interaktif · CMS/Blog &amp; Etika Publikasi</span>
+      </div>
+    </div>
+
+    <div class="header-stats">
+      <div class="stat-chip" title="Skor (Score)">
+        <span class="stat-label" data-i18n="score">SKOR (SCORE)</span>
+        <span class="stat-value" id="headerScore">0</span>
+      </div>
+      <div class="stat-chip" title="Level">
+        <span class="stat-label" data-i18n="level">LEVEL</span>
+        <span class="stat-value" id="headerLevel">–</span>
+      </div>
+      <div class="stat-chip timer-chip" id="timerChip" hidden>
+        <span class="stat-label" data-i18n="time">WAKTU (TIME)</span>
+        <span class="stat-value" id="headerTimer">--</span>
+      </div>
+    </div>
+
+    <div class="header-controls">
+      <button id="btnGlossary" class="icon-btn" type="button" aria-label="Buka Kamus Mini (Open Mini Dictionary)" title="Kamus Mini (Mini Dictionary)">📖</button>
+      <button id="btnLang" class="icon-btn lang-btn" type="button" aria-label="Ganti bahasa (Switch language)" title="Ganti Bahasa (Switch Language)">🇮🇩 ID</button>
+      <button id="btnTheme" class="icon-btn" type="button" aria-label="Ganti tema gelap atau terang (Toggle dark mode)" title="Mode Gelap (Dark Mode)">🌙</button>
+    </div>
+  </div>
+  <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="globalProgress"></div></div>
+</header>
+
+<!-- ============ MAIN ============ -->
+<main id="appMain">
+
+  <!-- ---------- SCREEN 1 : START ---------- -->
+  <section id="screen-start" class="screen is-active" aria-label="Layar Pembuka (Start Screen)">
+    <div class="card hero">
+      <img class="hero-logo" data-logo src="logo.png" alt="Logo SMP Negeri 19 Kota Bekasi" />
+      <h1 class="hero-title">SPENLAS DIGITAL JOURNALIST</h1>
+      <p class="hero-sub" data-i18n="heroSub">Misi: Menjadi Jurnalis Sekolah yang Beretika!</p>
+      <p class="hero-sub-en">Mission: Become an Ethical School Journalist!</p>
+
+      <label class="field" for="playerName">
+        <span data-i18n="nameLabel">Nama Jurnalis (Journalist Name) — opsional (optional)</span>
+        <input id="playerName" type="text" maxlength="15" autocomplete="off"
+               placeholder="Contoh: Rani" data-i18n-ph="namePlaceholder" />
+      </label>
+
+      <div class="hero-actions">
+        <button id="btnStart" class="btn btn-primary btn-pulse" type="button" data-i18n="btnStart">MULAI MISI (START MISSION)</button>
+        <button id="btnLearnFirst" class="btn btn-ghost" type="button" data-i18n="btnLearn">📚 BELAJAR DULU (LEARN FIRST)</button>
+      </div>
+
+      <div id="learnPanel" class="learn-panel" hidden>
+        <h3 data-i18n="learnTitle">📚 Ringkasan Materi (Material Summary)</h3>
+        <ul class="learn-list">
+          <li><strong>CMS (Content Management System / Sistem Manajemen Konten)</strong> — perangkat lunak yang membantu membuat, mengelola, dan memodifikasi konten di situs web tanpa perlu menguasai bahasa pemrograman dari nol. <em>Analogi: seperti menempati rumah susun yang sudah jadi — kita hanya membawa perabotan (tulisan, foto, video) dan menatanya.</em></li>
+          <li><strong>Contoh CMS:</strong> Blogger (platform Google, cocok untuk pemula), WordPress (populer, untuk blog maupun website profesional), Google Sites (milik Google, untuk situs sederhana).</li>
+          <li><strong>Metadata (Data tentang data)</strong> — informasi tentang data lain, sering berupa <strong>Label (Kategori)</strong>, <strong>Tag</strong>, atau <strong>Kategori</strong>. Fungsinya memudahkan pembaca dan mesin pencari menemukan tulisan kita.</li>
+          <li><strong>Copyright (Hak Cipta)</strong> — hak pemilik karya atas foto/tulisan. Mengambil foto dari Google Images tanpa izin = pelanggaran.</li>
+          <li><strong>Plagiarism (Plagiarisme / Penjiplakan)</strong> — menyalin-tempel karya orang lain dan mengakuinya sebagai karya sendiri. Skor kemiripan bisa 100%.</li>
+          <li><strong>Solusi etis:</strong> parafrasa (tulis ulang dengan bahasa sendiri) + cantumkan sumber/tautan asli.</li>
+          <li><strong>Creative Commons (Lisensi Karya Bebas Pakai)</strong> — lisensi gambar gratis (mis. Pexels/Unsplash) yang boleh dipakai asalkan sumbernya dicantumkan.</li>
+          <li><strong>Digital Footprint (Jejak Digital)</strong> — setiap konten yang kita unggah akan tertinggal selamanya di internet.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- SCREEN 2 : BRIEFING ---------- -->
+  <section id="screen-briefing" class="screen" aria-label="Pengarahan Misi (Mission Briefing)">
+    <div class="card briefing-card">
+      <h2 class="screen-title" data-i18n="briefTitle">📖 Pengarahan Misi (Mission Briefing)</h2>
+
+      <div class="narrative">
+        <p class="narr-id">🇮🇩 “Halo, Jurnalis Muda! Hari ini kamu akan mempublikasikan artikel pertamamu di blog sekolah. Tapi ingat — menulis di internet bukan sekadar menekan tombol <em>Publish (Publikasikan)</em>. Setiap konten adalah <strong>jejak digital (digital footprint)</strong> selamanya!”</p>
+        <p class="narr-en">🇬🇧 “Hello, Young Journalist! Today you will publish your first article on the school blog. But remember — writing on the internet is not just about pressing the <em>Publish</em> button. Every content becomes a <strong>digital footprint</strong> forever!”</p>
+        <p class="narr-id">🇮🇩 “Gunakan <em>CMS (Content Management System / Sistem Manajemen Konten)</em> dengan bijak, beri <em>Metadata (Data tentang data)</em> yang tepat, dan hormati <em>Copyright (Hak Cipta)</em>.”</p>
+        <p class="narr-en">🇬🇧 “Use the <em>CMS</em> wisely, add proper <em>Metadata</em>, and respect <em>Copyright</em>.”</p>
+      </div>
+
+      <div class="mission-icons">
+        <div class="mission-icon"><span class="mi-emoji">📝</span><span class="mi-label" data-i18n="mi1">Tulis (Write)</span></div>
+        <div class="mission-icon"><span class="mi-emoji">🖼️</span><span class="mi-label" data-i18n="mi2">Gambar (Image)</span></div>
+        <div class="mission-icon"><span class="mi-emoji">🏷️</span><span class="mi-label" data-i18n="mi3">Label (Tag)</span></div>
+      </div>
+
+      <button id="btnReady" class="btn btn-primary btn-pulse" type="button" data-i18n="btnReady">SAYA SIAP! (I'M READY!)</button>
+    </div>
+  </section>
+
+  <!-- ---------- SCREEN 3 : MISSION MAP ---------- -->
+  <section id="screen-map" class="screen" aria-label="Peta Misi (Mission Map)">
+    <div class="card map-card">
+      <h2 class="screen-title" data-i18n="mapTitle">🗺️ Peta Misi (Mission Map)</h2>
+      <p class="screen-sub" data-i18n="mapSub">Selesaikan setiap level secara berurutan untuk membuka level berikutnya.</p>
+      <p class="screen-sub-en">Complete each level in order to unlock the next one.</p>
+      <div class="level-grid" id="mapLevels"></div>
+    </div>
+  </section>
+
+  <!-- ---------- SCREEN 4 : GAME ---------- -->
+  <section id="screen-game" class="screen" aria-label="Area Permainan (Game Area)">
+    <div class="game-toolbar">
+      <button id="btnBackToMap" class="btn btn-ghost btn-sm" type="button" data-i18n="btnBackMap">← PETA MISI (MISSION MAP)</button>
+      <button id="btnHint" class="btn btn-ghost btn-sm" type="button" data-i18n="btnHint">❓ PETUNJUK (HINT)</button>
+    </div>
+    <div id="gameArea" class="game-area"></div>
+    <div id="feedbackBar" class="feedback-bar" role="status" aria-live="polite" hidden></div>
+  </section>
+
+  <!-- ---------- SCREEN 5 : RESULT ---------- -->
+  <section id="screen-result" class="screen" aria-label="Hasil Akhir (Final Result)">
+    <div class="card result-card">
+      <div class="medal" id="resultMedal">🏅</div>
+      <h2 class="screen-title" id="resultTitle">Misi Selesai! (Mission Complete!)</h2>
+      <p class="result-name" id="resultName"></p>
+      <p class="result-total"><span data-i18n="totalScore">TOTAL SKOR (TOTAL SCORE)</span>: <strong id="resultScore">0</strong> / 400</p>
+
+      <div class="score-breakdown" id="scoreBreakdown"></div>
+      <div class="badge-wrap" id="badgeWrap"></div>
+
+      <div class="exit-ticket">
+        <h3 data-i18n="exitTitle">🎫 Exit Ticket (Tiket Keluar)</h3>
+        <p class="exit-q">🇮🇩 Satu hal tentang etika publikasi yang baru saya sadari hari ini:</p>
+        <p class="exit-q en">🇬🇧 One thing about publication ethics I just realized today:</p>
+        <textarea id="reflectionInput" rows="3" maxlength="240"
+                  placeholder="Tulis refleksimu di sini… (Write your reflection here…)"
+                  aria-label="Refleksi siswa (Student reflection)"></textarea>
+        <button id="btnSaveReflection" class="btn btn-primary" type="button" data-i18n="btnSaveReflection">SIMPAN REFLEKSI (SAVE REFLECTION)</button>
+        <p class="saved-note" id="reflectionSaved" hidden>✅ Terima kasih, Jurnalis! Refleksimu sudah tercatat. (Thank you, Journalist! Your reflection has been recorded.)</p>
+      </div>
+
+      <div class="leaderboard" id="leaderboardBox"></div>
+
+      <div class="result-actions">
+        <button id="btnPrintCert" class="btn btn-secondary" type="button" data-i18n="btnPrint">🖨️ UNDUH SERTIFIKAT (PRINT CERTIFICATE)</button>
+        <button id="btnPlayAgain" class="btn btn-primary" type="button" data-i18n="btnPlayAgain">🔄 MAINKAN LAGI (PLAY AGAIN)</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER (FIXED) ============ -->
+<footer class="app-footer" id="appFooter">LKPD Informatika Kelas 9 · CMS/Blog dan Etika Publikasi · © 2026 SMP Negeri 19 Kota Bekasi</footer>
+
+<!-- ============ MODAL ============ -->
+<div class="modal-backdrop" id="modalBackdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head">
+      <h2 id="modalTitle">Informasi</h2>
+      <button class="icon-btn" id="modalClose" type="button" aria-label="Tutup (Close)">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-foot" id="modalFoot"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
+
+<!-- Area cetak sertifikat (hanya tampil saat print) -->
+<div id="printArea"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
